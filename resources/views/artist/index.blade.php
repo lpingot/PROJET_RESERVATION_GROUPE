@@ -8,6 +8,7 @@
         <li><a href="{{ route('artist.create') }}">Ajouter</a></li>    
     </ul>
 
+
     <table>
         <thead>
             <tr>

@@ -12,7 +12,12 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = Type::all();
+        
+        return view('type.index',[
+            'types' => $types,
+            'resource' => 'types',
+        ]);
     }
 
     /**
@@ -36,7 +41,11 @@ class TypeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $type = Type::find($id);
+        
+        return view('type.show',[
+            'type' => $type,
+        ]);
     }
 
     /**

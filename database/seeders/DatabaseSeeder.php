@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             TypeSeeder::class,
             LocationSeeder::class,
-            ShowSeeder::class
+            ShowSeeder::class,
+            RepresentationSeeder::class,
         ]);
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\LocalityController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\LocationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,3 +61,8 @@ Route::get('/locality/{id}', [LocalityController::class, 'show'])
 Route::get('/role', [RoleController::class, 'index'])->name('role.index');
 Route::get('/role/{id}', [RoleController::class, 'show'])
 		->where('id', '[0-9]+')->name('role.show');
+
+Route::get('location', [LocationController::class, 'index'])->name('location.index');
+Route::get('location/{id}', [LocationController::class, 'show'])
+        ->where('id', '[0-9]+')->name('location.show');
+              

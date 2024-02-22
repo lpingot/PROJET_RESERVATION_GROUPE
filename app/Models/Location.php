@@ -43,7 +43,7 @@ use HasFactory;
      */
     public function locality()
     {
-        return $this->belongsTo('App\Locality');
+        return $this->belongsTo(Locality::class);
     }
     /**
      * Get the shows in this location.

@@ -21,10 +21,11 @@ class DatabaseSeeder extends Seeder
             TypeSeeder::class,
             LocationSeeder::class,
             ShowSeeder::class,
-            RepresentationSeeder::class,
+            //RepresentationSeeder::class,
             ArtistTypeSeeder::class,
             ArtistTypeShowSeeder::class,
             UserRoleSeeder::class,
+            UserRepresentationSeeder::class,
         ]);
     }
 }

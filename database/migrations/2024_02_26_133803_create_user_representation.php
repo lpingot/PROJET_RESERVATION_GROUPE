@@ -4,24 +4,23 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserRoleTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('user_role', function (Blueprint $table) {
+        Schema::create('user_representation', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('role_id');
+            $table->foreignId('representation_id');
             
             $table->foreign('user_id')->references('id')->on('users')
                     ->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('role_id')->references('id')->on('roles')
+            $table->foreign('representation_id')->references('id')->on('representations')
                     ->onDelete('restrict')->onUpdate('cascade');
         });
-
     }
 
     /**
@@ -29,6 +28,6 @@ class CreateUserRoleTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_role');
+        Schema::dropIfExists('user_representation');
     }
 };

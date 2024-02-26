@@ -12,6 +12,13 @@
 	<button>Supprimer</button>
 </form>
 
+<h2>Liste des types</h2>
+    <ul>
+    @foreach($artist->types as $type)    
+        <li>{{ $type->type }}</li>
+    @endforeach
+    </ul>
+
 
     <nav><a href="{{ route('artist.index') }}">Retour à l'index</a></nav>
 @endsection

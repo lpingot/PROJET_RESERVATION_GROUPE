@@ -77,4 +77,8 @@ Route::get('/representation', [RepresentationController::class, 'index'])
 Route::get('/representation/{id}', [RepresentationController::class, 'show'])
         ->where('id', '[0-9]+')->name('representation.show');
         
+
         
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

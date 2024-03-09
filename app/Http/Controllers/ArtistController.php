@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Artist;
+use App\Models\Type;
+
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
@@ -36,7 +39,9 @@ class ArtistController extends Controller
             abort(403);
         }
 
-        return view('artist.create');    }
+        $types = Type::all(); // Récupère tous les types
+        return view('artist.create', ['types' => $types]);     
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -50,6 +55,8 @@ class ArtistController extends Controller
         $validated = $request->validate([
             'firstname' => 'required|max:60',
             'lastname' => 'required|max:60',
+            'types' => 'nullable|array', // Valide que 'types' est un tableau
+            'types.*' => 'exists:types,id' // Valide que chaque ID de type existe dans la table 'types'
         ]);
 
 	   //Le formulaire a été validé, nous créons un nouvel artiste à insérer
@@ -60,6 +67,8 @@ class ArtistController extends Controller
         $artist->lastname = $validated['lastname'];
 
         $artist->save();
+        // Synchroniser les types avec l'artiste
+        $artist->types()->sync($request->types);
 
         return redirect()->route('artist.index');
     }
@@ -93,9 +102,8 @@ class ArtistController extends Controller
 
         $artist = Artist::find($id);
         
-        return view('artist.edit',[
-            'artist' => $artist,
-        ]);
+        $types = Type::all(); // Récupère tous les types
+        return view('artist.edit', ['artist' => $artist, 'types' => $types]);
     }
 
     /**

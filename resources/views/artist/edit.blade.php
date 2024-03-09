@@ -55,4 +55,3 @@
 
     <nav><a href="{{ route('artist.index') }}">Retour à l'index</a></nav>
 @endsection
-

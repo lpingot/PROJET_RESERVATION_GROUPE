@@ -25,10 +25,11 @@
         @endif
 
         <h2>Liste des représentations</h2>
+        <p>Sélectionnez une représentation pour passer à la réservation</p>
         @if($show->representations->count()>=1)
         <ul>
             @foreach ($show->representations as $representation)
-                <li>{{ $representation->when }}</li>              
+                <li><a href="{{ route('representation.show', $representation->id)}}">{{ $representation->when }}</a></li>              
             @endforeach
         </ul>
         @else

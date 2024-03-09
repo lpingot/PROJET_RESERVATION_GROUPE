@@ -17,6 +17,8 @@
         @endif
         </p>
     </article>
-    <nav><a href="{{ route('representation.index') }}">Retour à l'index</a></nav>
+    <button class="btn btn-primary" type="submit">Réserver</button>
+
+   <!-- <nav><a href="{{ route('representation.index') }}">Retour à l'index</a></nav> -->
 @endsection
 

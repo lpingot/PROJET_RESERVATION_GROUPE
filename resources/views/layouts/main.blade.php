@@ -20,7 +20,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-            <a class="nav-link" href="{{ route('home') }}">Accueil <span class="sr-only"></span></a>
+            <a class="nav-link" href="{{ route('accueil') }}">Accueil <span class="sr-only"></span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('representation.index') }}">Agenda</a>
@@ -28,23 +28,27 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('show.index') }}">Spectacles</a>
         </li>
+    @auth
+        <!-- Supposons que vous passiez une variable $hasCurrentOrder à la vue, qui est vrai si une commande est en cours -->
+     
         <li class="nav-item">
             <a class="nav-link" href="{{ route('panier.index') }}">Panier</a>
         </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Profil
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
+  
+    
+    
+         <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProfile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Profil
+         </a>
+         <ul class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
+             <li><a class="dropdown-item" href="{{ route('user.profile') }}">Mes données</a></li>
+             <li><hr class="dropdown-divider"></li>
+             <!-- La route pour 'Mes commandes' n'est pas encore définie, donc le href est '#'. Vous pouvez le changer plus tard. -->
+             <li><a class="dropdown-item" href="#">Mes commandes</a></li>
+         </ul>
+         </li>
+    @endauth
         </ul>
         <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

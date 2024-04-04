@@ -73,6 +73,8 @@ public function confirm(Request $request)
         // Retourner une erreur ou rediriger si les informations de la réservation sont incomplètes
         return back()->with('error', 'Les informations de réservation sont incomplètes.'); // Assurez-vous que votre vue peut afficher ce message d'erreur
     }
+    // Formatage de la date et l'heure actuelles au format souhaité, par exemple "Y-m-d H:i:s"
+    $currentDateTime = now()->format('Y-m-d H:i:s');
 
     // Insertion des données de réservation dans la base de données
     foreach ($reservation['places'] as $type => $quantity) {
@@ -82,7 +84,7 @@ public function confirm(Request $request)
                 'user_id' => auth()->id(), // ID de l'utilisateur connecté
                 'places' => $quantity,
                 'profile_type' => $type, // Assurez-vous que cette donnée est correcte et attendue
-                'current_date_time' => $reservation['current_date_time'] // La date et l'heure de la réservation
+                'date' => $currentDateTime // Utilisez la variable formatée ici
             ]);
         }
     }

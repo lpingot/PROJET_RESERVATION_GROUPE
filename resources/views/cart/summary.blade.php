@@ -3,37 +3,47 @@
 @section('title', 'Récapitulatif de la commande')
 
 @section('content')
-    <h1>Récapitulatif de la commande</h1>
-    <p><strong>Show:</strong> {{ $reservation['show_title'] }}</p>
-    <p><strong>Date:</strong> {{ $reservation['date'] }}</p>
-    <p><strong>Heure:</strong> {{ $reservation['time'] }}</p>
-    <p><strong>Lieu:</strong> {{ $reservation['location'] }}</p>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Profil</th>
-                <th>Nombre de places</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            @php $totalAmount = 0; $totalPlaces = 0; @endphp
-            @foreach ($reservation['places'] as $type => $quantity)
-                @if($quantity > 0)
+    @php
+        $totalAmount = 0;
+        $totalPlaces = 0; // Initialisez $totalPlaces ici
+        // Supposons que $reservation['places'] est toujours défini et est un tableau. Si ce n'est pas le cas, ajustez selon votre logique d'application.
+        foreach ($reservation['places'] ?? [] as $type => $quantity) {
+            $totalPlaces += $quantity; // Calculez le total des places
+            $totalAmount += $quantity * ($reservation['prices'][$type] ?? 0); // Calculez le montant total ici pour éviter de le faire dans le corps du HTML
+        }
+    @endphp
+    @if($totalPlaces > 0)
+        <h1>Récapitulatif de la commande</h1>
+        <p><strong>Show:</strong> {{ $reservation['show_title'] }}</p>
+        <p><strong>Date:</strong> {{ $reservation['date'] }}</p>
+        <p><strong>Heure:</strong> {{ $reservation['time'] }}</p>
+        <p><strong>Lieu:</strong> {{ $reservation['location'] }}</p>
+
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>{{ ucfirst($type) }}</td>
-                    <td>{{ $quantity }}</td>
-                    <td>{{ $quantity * $reservation['prices'][$type] }} €</td>
-                    @php
-                        $totalAmount += $quantity * $reservation['prices'][$type];
-                        $totalPlaces += $quantity;
-                    @endphp
+                    <th>Profil</th>
+                    <th>Nombre de places</th>
+                    <th>Total</th>
                 </tr>
-                @endif
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @php $totalAmount = 0; @endphp
+                @foreach ($reservation['places'] as $type => $quantity)
+                    @if($quantity > 0)
+                    <tr>
+                        <td>{{ ucfirst($type) }}</td>
+                        <td>{{ $quantity }}</td>
+                        <td>{{ $quantity * $reservation['prices'][$type] }} €</td>
+                        @php
+                            $totalAmount += $quantity * $reservation['prices'][$type];
+                        @endphp
+                    </tr>
+                    @endif
+                @endforeach
+            </tbody>
+        </table>
 
     <!-- Ajout du résumé des places et du prix total -->
     <p><strong>Nombre de places :</strong> {{ $totalPlaces }}</p>
@@ -93,4 +103,9 @@
             form.submit();
         }
     </script>
+    @else
+        <div class="alert alert-info" role="alert">
+            Le panier est vide.
+        </div>
+    @endif
 @endsection

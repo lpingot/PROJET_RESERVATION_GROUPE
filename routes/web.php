@@ -12,6 +12,7 @@ use App\Http\Controllers\RepresentationController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserRepresentationController;
 
 
 /*
@@ -98,6 +99,7 @@ Route::post('/payment', [PaymentController::class, 'store'])->name('payment.stor
 Route::get('/panier', [CartController::class, 'summary'])->name('panier.index');
 
 Route::get('/profile', [UserController::class, 'profile'])->name('user.profile')->middleware('auth');
+Route::get('/mes-representations', [UserRepresentationController::class, 'index'])->name('user_representations.index')->middleware('auth');
 
 
 

@@ -45,7 +45,7 @@
              <li><a class="dropdown-item" href="{{ route('user.profile') }}">Mes données</a></li>
              <li><hr class="dropdown-divider"></li>
              <!-- La route pour 'Mes commandes' n'est pas encore définie, donc le href est '#'. Vous pouvez le changer plus tard. -->
-             <li><a class="dropdown-item" href="#">Mes commandes</a></li>
+             <li><a class="dropdown-item" href="{{ route ('user_representations.index') }}">Mes commandes</a></li>
          </ul>
          </li>
     @endauth
@@ -95,4 +95,81 @@
             @yield('content')
         </div>
     </body>
+    <footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Rejoignez-nous sur les réseaux sociaux :</span>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <div class="row mt-3">
+        <!-- Section: About -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Théâtre NomDuThéâtre
+          </h6>
+          <p>
+            Ici, vous pouvez utiliser des lignes et des colonnes pour organiser votre contenu de pied de page. Le théâtre NomDuThéâtre est engagé à offrir la meilleure expérience culturelle.
+          </p>
+        </div>
+        <!-- Section: About -->
+
+
+        <!-- Section: Contact -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+            Contact
+          </h6>
+          <p><i class="fas fa-home me-3"></i> Bruxelles, 1000, BE</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            info@example.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 02 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 02 234 567 89</p>
+        </div>
+        <!-- Section: Contact -->
+      </div>
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Section: Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2024 Droit d'auteur:
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">NomDuThéâtre.com</a>
+  </div>
+  <!-- Section: Copyright -->
+</footer>
+
 </html>

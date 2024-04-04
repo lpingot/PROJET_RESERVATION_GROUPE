@@ -45,4 +45,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function representations()
+{
+    return $this->belongsToMany('App\Models\Representation', 'user_representation', 'user_id', 'representation_id');
+}
 }

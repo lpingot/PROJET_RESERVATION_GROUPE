@@ -16,7 +16,7 @@
                     Spectacle : {{ $representation->show->title }}<br>
                     Date et Heure : {{ $representation->when }}<br>
                     Lieu : {{ optional($representation->show->location)->name }}<br>
-                    Places réservées : {{ $representation->places }}
+                    Places réservées : {{ $representation->userRepresenation->places }}
                 </li>
             @endforeach
         </ul>

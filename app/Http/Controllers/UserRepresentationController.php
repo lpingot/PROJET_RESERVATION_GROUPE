@@ -22,7 +22,7 @@ class UserRepresentationController extends Controller
 
         // Récupère toutes les représentations pour l'utilisateur connecté, incluant les détails des shows
         // et la date de réservation.
-        $representations = $user->representations()->with('show')->get();
+        $representations = UserRepresentation :: where (user_id);
 
                                  
 

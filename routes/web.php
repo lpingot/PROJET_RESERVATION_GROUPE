@@ -76,6 +76,9 @@ Route::get('/representation', [RepresentationController::class, 'index'])
         ->name('representation.index');
 Route::get('/representation/{id}', [RepresentationController::class, 'show'])
         ->where('id', '[0-9]+')->name('representation.show');
+
+
+        Route::feeds();
         
 
         

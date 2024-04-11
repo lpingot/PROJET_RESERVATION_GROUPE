@@ -11,14 +11,12 @@
     @else
 
         <ul class="list-group">
-            @foreach($representations as $representation)
-                <li class="list-group-item">
-                    Spectacle : {{ $representation->show->title }}<br>
-                    Date et Heure : {{ $representation->when }}<br>
-                    Lieu : {{ optional($representation->show->location)->name }}<br>
-                    Places réservées : {{ $representation->userRepresenation->places }}
-                </li>
-            @endforeach
+        @foreach ($representations as $representation)
+          <div>
+        <h3>Show: {{ $representation->show->title }}</h3>
+        <p>Date: {{ $representation->when }}</p>
+          </div>
+@endforeach
         </ul>
     @endif
         

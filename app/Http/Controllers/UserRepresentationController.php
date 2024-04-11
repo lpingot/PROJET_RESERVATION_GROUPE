@@ -20,15 +20,12 @@ class UserRepresentationController extends Controller
         // Récupère l'objet utilisateur connecté
         $user = Auth::user();
 
-        // Récupère toutes les représentations pour l'utilisateur connecté, incluant les détails des shows
-        // et la date de réservation.
-        $representations = UserRepresentation :: where (user_id);
+        // Récupère les représentations avec les détails du show pour l'utilisateur connecté
+        $representations = Auth::user()->representations()->with('show')->get();
+
+        return view('user_representations.index', compact('representations'));
 
                                  
 
-
-
-        // Passe les données à la vue
-        return view('user_representations.index', compact('representations'));
     }
 }

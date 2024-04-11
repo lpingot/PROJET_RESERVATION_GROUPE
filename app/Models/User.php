@@ -46,7 +46,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
     public function representations()
-{
-    return $this->belongsToMany('App\Models\Representation', 'user_representation', 'user_id', 'representation_id');
-}
+    {
+        // Assurez-vous de spécifier 'user_representation' comme le nom de la table pivot
+        return $this->belongsToMany(Representation::class, 'user_representation');
+    }
+    
 }

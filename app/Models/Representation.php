@@ -52,5 +52,11 @@ class Representation extends Model
     {
         return $this->hasMany(UserRepresentation::class);
     }
-
+    public function users()
+    {
+        // Ici aussi, spécifiez 'user_representation' comme le nom de la table pivot
+        return $this->belongsToMany(User::class, 'user_representation');
+    }
+    
+    
 }

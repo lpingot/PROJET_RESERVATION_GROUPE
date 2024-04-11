@@ -9,6 +9,12 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ShowController;
 use App\Http\Controllers\RepresentationController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserRepresentationController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -80,8 +86,23 @@ Route::get('/representation/{id}', [RepresentationController::class, 'show'])
 
         Route::feeds();
         
-
+// Ajouter cette ligne pour créer une route pour le panier
+Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
         
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/accueil', [App\Http\Controllers\HomeController::class, 'index'])->name('accueil');
+Route::get('/cart/summary', [CartController::class, 'summary'])->name('cart.summary');
+Route::match(['get' , 'post'],'/reservation/confirm', 'App\Http\Controllers\CartController@confirm')->name('final.confirmation');
+Route::get('/reservation/thankyou', function () {
+        return view('reservation.thankyou');
+    })->name('reservation.thankyou');
+    
+Route::post('/payment', [PaymentController::class, 'store'])->name('payment.store');
+Route::get('/panier', [CartController::class, 'summary'])->name('panier.index');
+
+Route::get('/profile', [UserController::class, 'profile'])->name('user.profile')->middleware('auth');
+Route::get('/mes-representations', [UserRepresentationController::class, 'index'])->name('user_representations.index')->middleware('auth');
+
+
+

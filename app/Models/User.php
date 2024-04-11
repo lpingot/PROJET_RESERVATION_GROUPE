@@ -45,4 +45,10 @@ class User extends \TCG\Voyager\Models\User
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function representations()
+    {
+        // Assurez-vous de spécifier 'user_representation' comme le nom de la table pivot
+        return $this->belongsToMany(Representation::class, 'user_representation');
+    }
+    
 }

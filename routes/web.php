@@ -82,6 +82,9 @@ Route::get('/representation', [RepresentationController::class, 'index'])
         ->name('representation.index');
 Route::get('/representation/{id}', [RepresentationController::class, 'show'])
         ->where('id', '[0-9]+')->name('representation.show');
+
+
+        Route::feeds();
         
 // Ajouter cette ligne pour créer une route pour le panier
 Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
